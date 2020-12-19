@@ -25,7 +25,7 @@ export default class App extends React.Component{
         data: [],
         isLoading: true,
         temp:"",
-        city:"Chennai",
+        city:"Kolkata",
         icon:"",
         city_display:"",
         desc: "",

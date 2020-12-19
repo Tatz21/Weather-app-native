@@ -1,80 +1,32 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+import LottieView from 'lottie-react-native';
 
-import Onboarding from 'react-native-onboarding-swiper';
 
-const Dots = ({selected}) => {
-    let backgroundColor;
+export default class Splash extends Component {
+    constructor(props) {
+        super();
+    }
 
-    backgroundColor = selected ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.3)';
-
-    return (
-        <View 
-            style={{
-                width:6,
-                height: 6,
-                marginHorizontal: 3,
-                backgroundColor
-            }}
-        />
-    );
+    render() {
+        return (
+            <View
+                style={{
+                    flex: 1,
+                    backgroundColor: '#ffffff'
+                }}
+            >
+                <LottieView
+                    source={require('../Assets/8595-weather-app-animation.json')}
+                    autoPlay
+                    loop={false}
+                    speed={0.5}
+                    onAnimationFinish={() => {
+                        console.log('Animation Finished!')
+                        this.props.navigation.navigate('WeatherScreen');
+                    }}
+                />
+            </View>
+        )
+    }
 }
-
-const Skip = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Skip</Text>
-    </TouchableOpacity>
-);
-
-const Next = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Next</Text>
-    </TouchableOpacity>
-);
-
-const Done = ({...props}) => (
-    <TouchableOpacity
-        style={{marginHorizontal:10}}
-        {...props}
-    >
-        <Text style={{fontSize:16}}>Next</Text>
-    </TouchableOpacity>
-);
-
-const OnboardingScreen = ({navigation}) => {
-    return (
-        <Onboarding
-        SkipButtonComponent={Skip}
-        NextButtonComponent={Next}
-        DoneButtonComponent={Done}
-        DotComponent={Dots}
-        onSkip={() => navigation.replace("Weather")}
-        onDone={() => navigation.navigate("Weather")}
-        pages={[
-          {
-            backgroundColor: '#fff',
-            image: <Image source={require('../Assets/35781-weather-night-clear-sky.json')} />,
-            title: 'Click on Next',
-            
-          },
-      
-        ]}
-      />
-    );
-};
-
-export default OnboardingScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center'
-  },
-});
