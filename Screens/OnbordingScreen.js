@@ -43,7 +43,7 @@ const Done = ({...props}) => (
         style={{marginHorizontal:10}}
         {...props}
     >
-        <Text style={{fontSize:16}}>Done</Text>
+        <Text style={{fontSize:16}}>Next</Text>
     </TouchableOpacity>
 );
 
@@ -61,20 +61,9 @@ const OnboardingScreen = ({navigation}) => {
             backgroundColor: '#a6e4d0',
             image: <Image source={require('../Assets/weather-app-796x419.png')} />,
             title: 'Connect to the World',
-            subtitle: 'A New Way To Connect With The World',
+            subtitle: 'Press Next for our main App',
           },
-          {
-            backgroundColor: '#fdeb93',
-            image: <Image source={require('../Assets/weather-app-796x419.png')} />,
-            title: 'Share Your Favorites',
-            subtitle: 'Share Your Thoughts With Similar Kind of People',
-          },
-          {
-            backgroundColor: '#e9bcbe',
-            image: <Image source={require('../Assets/weather-app-796x419.png')} />,
-            title: 'Become The Star',
-            subtitle: "Let The Spot Light Capture You",
-          },
+        
         ]}
       />
     );
